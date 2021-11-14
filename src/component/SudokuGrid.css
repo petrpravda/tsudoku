@@ -1,0 +1,216 @@
+.sudoku-board-container-outer {
+    --sudoku-board-font-size: 16px;
+    font-size: var(--sudoku-board-font-size);
+
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: auto 1fr;
+    height: 100%;
+}
+
+.sudoku-board-container {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    background-color: #111111;
+    height: 100%;
+    grid-column-gap: 0.04em;
+    grid-row-gap: 0.04em;
+    border: 0.07em solid #111111;
+    user-select: none;
+
+    font-size: 2.5em;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+}
+
+.sudoku-board-cell {
+    background-color: white;
+    /*display: flex;*/
+    /*display: inline*/
+    justify-content: center;
+    align-items: center;
+    /*box-sizing: border-box;*/
+}
+
+.sudoku-board-cell:nth-child(3n + 1) {
+    border-left: 0.03em solid #111111;
+}
+
+.sudoku-board-cell:nth-child(3n + 3) {
+    border-right: 0.03em solid #111111;
+}
+
+.sudoku-board-cell:nth-child(n+1):nth-child(-n+9),
+.sudoku-board-cell:nth-child(n+28):nth-child(-n+36),
+.sudoku-board-cell:nth-child(n+55):nth-child(-n+63) {
+    border-top: 0.03em solid #111111;
+}
+
+.sudoku-board-cell:nth-child(n+19):nth-child(-n+27),
+.sudoku-board-cell:nth-child(n+46):nth-child(-n+54),
+.sudoku-board-cell:nth-child(n+73):nth-child(-n+81) {
+    border-bottom: 0.03em solid #111111;
+}
+
+.sudoku-board-cell .place-digit {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.sudoku-board-cell .known {
+    background-color: #dddddd;
+    color: #2c3e50;
+}
+
+.sudoku-board-cell .user-entered {
+    cursor: pointer;
+}
+
+.bg-entered-w-help {
+    color: #8d6800;
+}
+
+.bg-error {
+    background-color: indianred;
+}
+
+.bg-hint-highlight {
+    background-color: burlywood;
+}
+
+.hints {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 33.33%);
+    grid-template-rows: repeat(3, 33.33%);
+    gap: 0 0;
+    grid-template-areas:
+    "n1 n2 n3"
+    "n4 n5 n6"
+    "n7 n8 n9";
+}
+
+.n1 { grid-area: n1; }
+.n2 { grid-area: n2; }
+.n3 { grid-area: n3; }
+.n4 { grid-area: n4; }
+.n5 { grid-area: n5; }
+.n6 { grid-area: n6; }
+.n7 { grid-area: n7; }
+.n8 { grid-area: n8; }
+.n9 { grid-area: n9; }
+
+.hints .dimmed {
+    color: #ddd;
+}
+
+.hints div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.32em;
+}
+
+.hint-legal {
+    border-radius: 50%;
+    box-shadow: 0 0 0 0.15em green inset;
+    color: black;
+}
+
+.hint-illegal {
+    /*border-radius: 50%;*/
+    /*box-shadow: 0 0 0 0.1em darkred inset;*/
+    color: black;
+
+    border-radius: 50%;
+    box-shadow: 0 0 0 0.15em red inset;
+    background-image: linear-gradient(
+            -45deg
+            , transparent, transparent 45%, red, transparent 55%, transparent);
+}
+
+.sudoku-board-cell .empty {
+    cursor: pointer;
+}
+
+.sudoku-grid-outer {
+    grid-area: board-container;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sudoku-grid {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+}
+
+.sudoku-grid-inner {
+    position: absolute;
+    inset: 0px;
+}
+
+.column-headers {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    text-align: center;
+    align-items: stretch;
+    align-content: stretch;
+}
+.column-headers > div {
+    flex-grow: 1;
+}
+
+.headers {
+    font-size: 0.8em;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+}
+
+.row-headers {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.row-headers > div {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 0.2em;
+    padding-left: 0.5em;
+}
+
+.spinner {
+    animation: spin infinite 2s linear;
+    font-size: 5em;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

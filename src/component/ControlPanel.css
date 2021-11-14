@@ -1,0 +1,23 @@
+.control-panel {
+    grid-area: control-panel-right;
+    font-size: 0.75em;
+    align-self: center;
+    overflow: hidden;
+}
+
+.control-panel-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.button {
+    font-size: 1.1em;
+}
+
+.switch {
+    font-size: 1.1em;
+    padding-bottom: 0.5em;
+    padding-top: 0.25em;
+}
+
+

@@ -1,0 +1,24 @@
+- klavesovy zkratky
+- hint display -> layouting
+- initial commit
+
+- bug: naked single cell
+  The cell E4 has a single candidate with the value of 9.
+  Cell solved with the value of 9. Candidate 9 removed from cells NaN.
+
+---------------------------------------------------------------------
+- mouseDown vs mouseClick
+- zobrazeni kodu hry
+- vyber kurzoru (i vicenasobnyho)
+- refactoring
+
+https://medium.com/swlh/intro-to-webassembly-in-react-with-rust-d067408231b9
+https://www.newline.co/fullstack-react/articles/rust-react-and-web-assembly/
+WebWorker:
+https://medium.com/@marvinirwin/webassembly-typescript-web-workers-and-create-react-app-b3b507332435
+https://medium.com/lagierandlagier/nextjs-webassembly-and-web-workers-a5f7c19d4fd0
+https://alexanderleon.medium.com/react-webassembly-compiling-a-c-library-ea5d60be1beb
+https://www.linkedin.com/pulse/web-worker-react-ha%C3%AFkel-ouaghrem   // bez Wasm
+
+
+- pouzivat styled components ?

@@ -1,0 +1,12 @@
+.layout {
+    display: grid;
+    grid-template-rows: auto minmax(20em, 40em) auto;
+    grid-template-columns: auto minmax(20em, 40em) max(20vw, 19em) auto;
+    gap: 1em;
+    min-height: 100vh;
+    overflow: auto;
+    grid-template-areas:
+". . . ."
+". board-container control-panel-right ."
+". . . .";
+}

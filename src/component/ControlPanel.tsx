@@ -100,30 +100,33 @@ const ControlPanel: React.FC<{}> = ({ children }) => {
 
     // @ts-ignore
     return (
-        <div className="control-panel">
-            <div className="buttons control-panel-grid">
-                <ControlButton onClick={showNewGameDialog} full={true}>New Puzzle <FaGamepad/></ControlButton>
-                <ControlButton full={true} onClick={hintButtonHandler}>{explanation ? 'Continue with Hint' : 'Hint'} <FaLightbulb/></ControlButton>
+        <div className="control-panel-outer">
+            <div className="control-panel">
+                <div className="buttons control-panel-grid">
+                    <ControlButton onClick={showNewGameDialog} full={true}>New Puzzle <FaGamepad/></ControlButton>
+                    <ControlButton full={true} onClick={hintButtonHandler}>{explanation ? 'Continue with Hint' : 'Hint'} <FaLightbulb/></ControlButton>
 
-                <ControlButton onClick={() => dispatch(fillCandidates())}>Fill candidates <FaPencilAlt/></ControlButton>
-                <ControlButton onClick={() => dispatch(eraseCandidates())}>Erase candidates <FaEraser/></ControlButton>
-                <label className="checkbox switch">
-                    <input type="checkbox" checked={autoCandidates} onChange={e => dispatch(setAutoCandidates(e.target.checked))} /> <FaMagic/> Auto-candidates
-                </label>
-                <label className="checkbox switch">
-                    <input type="checkbox" checked={focusSelected} onChange={e => dispatch(setFocusSelected(e.target.checked))} /> <FaBinoculars/> Focused on {selectedNumber}
-                </label>
-                <ControlButton onClick={() => dispatch(revealErrors())}>Reveal errors <FaBug/></ControlButton>
-                <ControlButton onClick={() => dispatch(resetGame())}>Reset game <FaRedo/></ControlButton>
-                <NumbersBoard selectedNumber={selectedNumber} />
-                <ControlButton dimmed={numericKeypadMode !== NumericKeypadMode.CELL_NUMERIC_VALUE}
-                    onClick={() => dispatch(setNumericKeypadMode(NumericKeypadMode.CELL_NUMERIC_VALUE))}>Numbers <FaCircle/></ControlButton>
-                <ControlButton dimmed={numericKeypadMode !== NumericKeypadMode.CANDIDATE_HINT}
-                    onClick={() => dispatch(setNumericKeypadMode(NumericKeypadMode.CANDIDATE_HINT))}>Candidates <FaTh/></ControlButton>
-                <ControlButton full={true}>Keyboard shortcuts <FaKeyboard/></ControlButton>
-                <div></div>
+                    <ControlButton onClick={() => dispatch(fillCandidates())}>Fill candidates <FaPencilAlt/></ControlButton>
+                    <ControlButton onClick={() => dispatch(eraseCandidates())}>Erase candidates <FaEraser/></ControlButton>
+                    <label className="checkbox switch">
+                        <input type="checkbox" checked={autoCandidates} onChange={e => dispatch(setAutoCandidates(e.target.checked))} /> <FaMagic/> Auto-candidates
+                    </label>
+                    <label className="checkbox switch">
+                        <input type="checkbox" checked={focusSelected} onChange={e => dispatch(setFocusSelected(e.target.checked))} /> <FaBinoculars/> Focused on {selectedNumber}
+                    </label>
+                    <ControlButton onClick={() => dispatch(revealErrors())}>Reveal errors <FaBug/></ControlButton>
+                    <ControlButton onClick={() => dispatch(resetGame())}>Reset game <FaRedo/></ControlButton>
+                    <NumbersBoard selectedNumber={selectedNumber} />
+                    <ControlButton dimmed={numericKeypadMode !== NumericKeypadMode.CELL_NUMERIC_VALUE}
+                                   onClick={() => dispatch(setNumericKeypadMode(NumericKeypadMode.CELL_NUMERIC_VALUE))}>Numbers <FaCircle/></ControlButton>
+                    <ControlButton dimmed={numericKeypadMode !== NumericKeypadMode.CANDIDATE_HINT}
+                                   onClick={() => dispatch(setNumericKeypadMode(NumericKeypadMode.CANDIDATE_HINT))}>Candidates <FaTh/></ControlButton>
+                    <ControlButton full={true}>Keyboard shortcuts <FaKeyboard/></ControlButton>
+                </div>
             </div>
-            {explanation && <ExplanationControl explanation={explanation}/>}
+            <div className="explanation-panel">
+                {explanation && <ExplanationControl explanation={explanation}/>}
+            </div>
         </div>
     )
 };

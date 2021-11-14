@@ -1,8 +1,18 @@
-.control-panel {
+.control-panel-outer {
     grid-area: control-panel-right;
     font-size: 0.75em;
     align-self: center;
-    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.control-panel {
+}
+
+.explanation-panel {
+    height: 10em;
 }
 
 .control-panel-grid {
@@ -19,5 +29,3 @@
     padding-bottom: 0.5em;
     padding-top: 0.25em;
 }
-
-

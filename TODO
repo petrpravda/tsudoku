@@ -1,8 +1,4 @@
-- klavesovy zkratky
-
-- bug: naked single cell
-  The cell E4 has a single candidate with the value of 9.
-  Cell solved with the value of 9. Candidate 9 removed from cells NaN.
+- keyboard shortcuts
 
 ---------------------------------------------------------------------
 - mouseDown vs mouseClick
@@ -17,6 +13,3 @@ https://medium.com/@marvinirwin/webassembly-typescript-web-workers-and-create-re
 https://medium.com/lagierandlagier/nextjs-webassembly-and-web-workers-a5f7c19d4fd0
 https://alexanderleon.medium.com/react-webassembly-compiling-a-c-library-ea5d60be1beb
 https://www.linkedin.com/pulse/web-worker-react-ha%C3%AFkel-ouaghrem   // bez Wasm
-
-
-- pouzivat styled components ?

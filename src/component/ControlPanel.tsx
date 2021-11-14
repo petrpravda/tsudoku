@@ -32,10 +32,10 @@ import {askForHint, getCandidatesDescriptor, getGameDescriptor} from "../model/s
 import {Explanation} from "../model/sudoku/explanation";
 import {NumericKeypadMode} from "../reducer/SudokuGridReducer";
 
-const ControlButton: React.FC<{full?: boolean, onClick?: () => void, dimmed?: boolean}> = ({
-        children, full = false, onClick, dimmed = false }) => {
+const ControlButton: React.FC<{full?: boolean, onClick?: () => void, dimmed?: boolean, disabled?: boolean}> = ({
+        children, full = false, onClick, dimmed = false, disabled = false }) => {
     let style = {gridColumn: full ? "1 / 3" : "", display: "flex", gap: "0.5em"};
-    return <button className={dimmed ? 'button is-light' : 'button is-primary'} style={style} onClick={onClick}>
+    return <button className={dimmed ? 'button is-light' : 'button is-primary'} style={style} disabled={disabled} onClick={onClick}>
         {children}
     </button>;
 }
@@ -121,7 +121,7 @@ const ControlPanel: React.FC<{}> = ({ children }) => {
                                    onClick={() => dispatch(setNumericKeypadMode(NumericKeypadMode.CELL_NUMERIC_VALUE))}>Numbers <FaCircle/></ControlButton>
                     <ControlButton dimmed={numericKeypadMode !== NumericKeypadMode.CANDIDATE_HINT}
                                    onClick={() => dispatch(setNumericKeypadMode(NumericKeypadMode.CANDIDATE_HINT))}>Candidates <FaTh/></ControlButton>
-                    <ControlButton full={true}>Keyboard shortcuts <FaKeyboard/></ControlButton>
+                    <ControlButton full={true} disabled={true}>Keyboard shortcuts <FaKeyboard/></ControlButton>
                 </div>
             </div>
             <div className="explanation-panel">

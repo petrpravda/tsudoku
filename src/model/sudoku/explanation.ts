@@ -143,7 +143,8 @@ export class SolvingStepSetValue extends Explanation {
         if (this.strategyType === 'NakedSingle') {
             return {title: `Naked Single in cell ${toCellPosition(this.index)}`,
                 description: `The cell ${toCellPosition(this.index)} has a single candidate with the value of ${this.value}.`,
-                resolution: `Cell solved with the value of ${this.value}. Candidate ${this.value} removed from cells ${toCellPositions(this.candidateRemovals)}.`};
+                resolution: `Cell solved with the value of ${this.value}.`
+                    + (this.candidateRemovals.length > 0 ? ` Candidate ${this.value} removed from cells ${toCellPositions(this.candidateRemovals)}.` : '')};
         } else {
             return {title: `Hidden Single in cell ${toCellPosition(this.index)}`,
                 description: `The cell ${toCellPosition(this.index)} is the only cell in ${this.sectionType} ${toSectionIdentificator(this.index, this.sectionType)} with the candidate value ${this.value}.`,
@@ -418,7 +419,11 @@ export function parseCellPosition(cellCode: string): number {
  * @param cellCodes cell identifiers delimited with a comma
  */
 export function parseCellPositions(cellCodes: string): Array<number> {
-    return cellCodes.split(",").map(x => parseCellPosition(x));
+    if (cellCodes === '') {
+        return [];
+    } else {
+        return cellCodes.split(",").map(x => parseCellPosition(x));
+    }
 }
 
 /**

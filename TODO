@@ -1,6 +1,4 @@
 - klavesovy zkratky
-- hint display -> layouting
-- initial commit
 
 - bug: naked single cell
   The cell E4 has a single candidate with the value of 9.

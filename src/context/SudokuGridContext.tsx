@@ -52,7 +52,7 @@ interface DeleteNumberAtSelectionAtAction {
 
 interface UpdateNumberSelectorAction {
     type: "UPDATE_NUMBER_SELECTOR"
-    payload: { direction: number }
+    payload: { direction?: number, value?: number }
 }
 interface MoveCursorAction {
     type: "MOVE_CURSOR"
@@ -128,8 +128,8 @@ export const setNumberAtSelection = (value: number, candidatesMode: boolean): Se
 export const deleteNumberAtSelection = (): DeleteNumberAtSelectionAtAction =>
     ({ type: "DELETE_NUMBER_AT_SELECTION", payload: { } });
 
-export const updateNumberSelector = (direction: number): UpdateNumberSelectorAction =>
-    ({ type: "UPDATE_NUMBER_SELECTOR", payload: {direction} });
+export const updateNumberSelector = (direction?: number, value?: number): UpdateNumberSelectorAction =>
+    ({ type: "UPDATE_NUMBER_SELECTOR", payload: {direction, value} });
 
 export const moveCursor = (xMovement: number, yMovement: number): MoveCursorAction =>
     ({ type: "MOVE_CURSOR", payload: {xMovement, yMovement} });

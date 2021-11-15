@@ -61,7 +61,7 @@ const SudokuBoardContainer: React.FC<{}> = ({ children }) => {
         }
         if (e.key === 'PageDown' || e.key === 'PageUp') {
             e.preventDefault();
-            dispatch(updateNumberSelector(e.key === 'PageDown' ? 1 : -1));
+            dispatch(updateNumberSelector(e.key === 'PageDown' ? 1 : -1, undefined));
         }
 
         // if (new Set(['U', 'u']).has(e.key) && e.ctrlKey && e.shiftKey) {

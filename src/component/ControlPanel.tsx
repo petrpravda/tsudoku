@@ -25,7 +25,7 @@ import {
     revealErrors,
     setAutoCandidates,
     setFocusSelected,
-    setNumericKeypadMode,
+    setNumericKeypadMode, updateNumberSelector,
     useSudokuGridState
 } from "../context/SudokuGridContext";
 import {askForHint, getCandidatesDescriptor, getGameDescriptor} from "../model/sudoku/game";
@@ -91,6 +91,10 @@ const ControlPanel: React.FC<{}> = ({ children }) => {
         }
     }
 
+    const onNumberSelected = (value: number) => {
+        dispatch(updateNumberSelector(undefined, value));
+    };
+
     useEffect(() => {
         window.addEventListener("keydown", onKeyDownListener);
         return () => {
@@ -116,7 +120,7 @@ const ControlPanel: React.FC<{}> = ({ children }) => {
                     </label>
                     <ControlButton onClick={() => dispatch(revealErrors())}>Reveal errors <FaBug/></ControlButton>
                     <ControlButton onClick={() => dispatch(resetGame())}>Reset game <FaRedo/></ControlButton>
-                    <NumbersBoard selectedNumber={selectedNumber} />
+                    <NumbersBoard selectedNumber={selectedNumber} onNumberSelected={onNumberSelected}/>
                     <ControlButton dimmed={numericKeypadMode !== NumericKeypadMode.CELL_NUMERIC_VALUE}
                                    onClick={() => dispatch(setNumericKeypadMode(NumericKeypadMode.CELL_NUMERIC_VALUE))}>Numbers <FaCircle/></ControlButton>
                     <ControlButton dimmed={numericKeypadMode !== NumericKeypadMode.CANDIDATE_HINT}

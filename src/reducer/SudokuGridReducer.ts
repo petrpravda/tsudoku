@@ -124,9 +124,15 @@ export const appStateReducer = (state: SudokuGridContextState, action: Action): 
             return handleNumberEntry(state.selection, undefined, false);
         }
         case "UPDATE_NUMBER_SELECTOR":
-            let selectedNumber = state.selectedNumber + action.payload.direction;
-            selectedNumber = Math.max(1, Math.min(selectedNumber, 9));
-            return { ...state, selectedNumber };
+            if (action.payload.direction) {
+                let selectedNumber = state.selectedNumber + action.payload.direction;
+                selectedNumber = Math.max(1, Math.min(selectedNumber, 9));
+                return { ...state, selectedNumber };
+            } else if (action.payload.value) {
+                return { ...state, selectedNumber: action.payload.value };
+            } else {
+                return state;
+            }
         case "MOVE_CURSOR":
             let cursorX = Math.max(0, Math.min(state.cursorX + action.payload.xMovement, 8));
             let cursorY = Math.max(0, Math.min(state.cursorY + action.payload.yMovement, 8));
